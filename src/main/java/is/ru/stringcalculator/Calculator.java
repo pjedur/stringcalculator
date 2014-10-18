@@ -6,6 +6,10 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(newDelimiter(text))
+		{
+			return sum(splitNumbers(text));
+		}
 		else if(isNegative(text))
 		{
 			return 10;
@@ -22,16 +26,22 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\\n");
+	    return numbers.split("[\\W|\\n]");
 	}
       
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
+		if(isInteger(number))
 		    total += toInt(number);
 		}
 		return total;
    	 }
+	private static boolean newDelimiter(String text)
+	{
+		char[] result = text.toCharArray();
+		return ((result[0] =='/') && (result[1] =='/'));
+	}
 
 	private static boolean isNegative(String numbers)
 	{
@@ -49,5 +59,11 @@ public class Calculator {
 
 		}
 		return results;	
+	}
+	private static boolean isInteger(String s)
+	{
+		try{ Integer.parseInt(s); }
+		catch(NumberFormatException e) { return false;}
+		return true;
 	}
 }

@@ -39,5 +39,9 @@ public class CalculatorTest {
 		assertEquals(10, Calculator.add("-1"));
 	}
 	
+	@Test
+	public void testNewDelimiter(){
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
 
 }

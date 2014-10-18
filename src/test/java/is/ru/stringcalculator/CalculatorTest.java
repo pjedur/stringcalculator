@@ -48,6 +48,10 @@ public class CalculatorTest {
 	public void testManyDelimiters(){
 		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
 	}
+	@Test
+	public void ReallyReallyLongDelimiter(){
+		assertEquals(45, Calculator.add("1@2#3$4%5^6&7*8(9)0)|]{';,>."));
+	}
 	
 	@Test 
 	public void testMoreDelimiters(){

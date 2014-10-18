@@ -6,6 +6,10 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(isNegative(text))
+		{
+			return 10;
+		}	
 		else if(text.contains(",") || text.contains("\\n")){
 			return sum(splitNumbers(text));
 		}
@@ -27,8 +31,23 @@ public class Calculator {
 		    total += toInt(number);
 		}
 		return total;
-    }
+   	 }
 
+	private static boolean isNegative(String numbers)
+	{
+		return numbers.contains("-");
+	}
+	
+	private static String NoNegatives(String numbers)
+	{
+		char[] x = numbers.toCharArray();
+		String results = "Negatives not allowed: ";
+		for(int i = 0; i < numbers.length();i++)
+		{
+			if(x[i] == '-')
+			{  results += "-" + x[i+1] + ","; }
 
-
+		}
+		return results;	
+	}
 }

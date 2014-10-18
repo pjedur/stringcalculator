@@ -43,5 +43,10 @@ public class CalculatorTest {
 	public void testNewDelimiter(){
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+	
+	@Test
+	public void testManyDelimiters(){
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
 
 }
